@@ -7,7 +7,15 @@ function initImporter(globals){
         name = name[ name.length - 1 ]
         extension = extension[ extension.length - 1 ]
 
-        console.log(extension, name)
+        if (extension === 'svg'){
+            globals.url = url
+            globals.filename = name
+            globals.extension = extension
+            globals.pattern.loadSVG('assets/' + url, true)
+            // globals.curvedFolding.loadSVG('assets/'' + url, true)
+        } else {
+            console.warn('unknown extension: ' + extension)
+        }
     }
 
     return { importDemoFile }
